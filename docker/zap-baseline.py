@@ -446,7 +446,7 @@ def main(argv):
 
             # Generate the yaml file
             home_dir = str(Path.home())
-            yaml_file = os.path.join(base_dir, 'zap.yaml')
+            yaml_file = os.path.join(home_dir, 'zap.yaml')
             summary_file = os.path.join(home_dir, 'zap_out.json')
             generate_af_plan(yaml_file, summary_file, target, out_of_scope_dict, debug, mins, ajax, timeout, delay,
                              detailed_output, config_dict, config_msg, report_html, report_md, report_xml,

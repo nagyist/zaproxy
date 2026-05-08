@@ -1,6 +1,9 @@
 # Changelog
 All notable changes to the docker containers will be documented in this file.
 
+### 2026-05-08
+- Fixed bug in baseline scan which could result in a python error when running the packaged scan without a mapped drive.
+
 ### 2026-03-10
 - Use alert references in "Alert on HTTP Response Code Errors" script to avoid duplicates (Issue 9273).
 
