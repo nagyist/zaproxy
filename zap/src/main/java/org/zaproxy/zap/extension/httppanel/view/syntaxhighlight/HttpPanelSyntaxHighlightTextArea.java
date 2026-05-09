@@ -263,7 +263,19 @@ public abstract class HttpPanelSyntaxHighlightTextArea extends RSyntaxTextArea {
     @Override
     // Apply highlights after a setText()
     public void setText(String s) {
-        super.setText(s);
+        if (s == null) {
+            s = "";
+        }
+        if (s.equals(getText())) {
+            return;
+        }
+
+        beginAtomicEdit();
+        try {
+            super.setText(s);
+        } finally {
+            endAtomicEdit();
+        }
         highlightAll();
     }
 
@@ -416,6 +428,11 @@ public abstract class HttpPanelSyntaxHighlightTextArea extends RSyntaxTextArea {
     }
 
     protected abstract CustomTokenMakerFactory getTokenMakerFactory();
+
+    // Visible for testing
+    static void setSyntaxMenu(SyntaxMenu menu) {
+        syntaxMenu = menu;
+    }
 
     private static synchronized void initActions() {
         if (syntaxMenu == null) {
